@@ -20,12 +20,15 @@ class CalculatorBrain {
 		"π" : Operation.Constant(M_PI),
 		"e" : Operation.Constant(M_E),
 		"√" : Operation.UnaryOperation(sqrt),
+		"sin" : Operation.UnaryOperation(sin),
 		"cos" : Operation.UnaryOperation(cos),
+		"tan" : Operation.UnaryOperation(tan),
 		"×" : Operation.BinaryOperation({ $0 * $1 }),
 		"÷" : Operation.BinaryOperation({ $0 / $1 }),
 		"+" : Operation.BinaryOperation({ $0 + $1 }),
 		"−" : Operation.BinaryOperation({ $0 - $1 }),
-		"=" : Operation.Equals
+		"^" : Operation.BinaryOperation({ pow($0, $1) }),
+		"=" : Operation.Equals,
 	]
 	
 	enum Operation {
@@ -57,7 +60,7 @@ class CalculatorBrain {
 			pending = nil
 		}
 	}
-	private var pending : PendingBinaryOperationInfo?
+	var pending : PendingBinaryOperationInfo?
 	
 	struct PendingBinaryOperationInfo {
 		var binaryFunction: (Double, Double) -> Double

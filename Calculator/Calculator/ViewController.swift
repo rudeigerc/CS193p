@@ -50,5 +50,12 @@ class ViewController: UIViewController {
 		}
 		displayValue = brain.result
 	}
+	
+	@IBAction func resetAll(_ sender: UIButton) {
+		display.text = "0"
+		brain.pending = nil
+		userIsInTheMiddleOfTyping = false
+	}
+	
 }
 
