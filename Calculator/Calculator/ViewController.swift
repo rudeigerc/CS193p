@@ -19,12 +19,16 @@ class ViewController: UIViewController {
 		if userIsInTheMiddleOfTyping {
 			let textCurrentlyInDisplay = display.text!
 			if digit == "." && textCurrentlyInDisplay.range(of: ".") != nil {
-				display.text = textCurrentlyInDisplay
+				display.text = textCurrentlyInDisplay	// avoid mutiple "."
 			} else {
 				display.text = textCurrentlyInDisplay + digit
 			}
 		} else {
-			display.text = digit
+			if digit == "." {
+				display.text = "0."	// avoid "." is inputted at first
+			} else {
+				display.text = digit
+			}
 		}
 		userIsInTheMiddleOfTyping = true
 	}
@@ -49,13 +53,22 @@ class ViewController: UIViewController {
 			brain.performOperation(symbol: mathematicalSymbol)
 		}
 		displayValue = brain.result
+		if brain.isPartialResult {
+			showSequence.text = brain.description + " ="
+		} else {
+			showSequence.text = brain.description + "..."
+		}
+		brain.isPartialResult = false	// reset isPartialResult
 	}
 	
-	@IBAction func resetAll(_ sender: UIButton) {
+	@IBAction private func resetAll(_ sender: UIButton) {
 		display.text = "0"
-		brain.pending = nil
+		brain.clear()
+		showSequence.text?.removeAll()
 		userIsInTheMiddleOfTyping = false
 	}
+	
+	@IBOutlet private weak var showSequence: UILabel!
 	
 }
 
