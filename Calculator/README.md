@@ -20,13 +20,13 @@
 
 ### Enhancement
 
-- [ ] 1. Implement a “backspace” button for the user to touch if they hit the wrong digit button
+- [ ] ~~1. Implement a “backspace” button for the user to touch if they hit the wrong digit button~~
 
 
-- [ ] 2. Change the computed instance variable **displayValue** to be an Optional *Double* rather than a *Double*
+- [ ] ~~2. Change the computed instance variable **displayValue** to be an Optional *Double* rather than a *Double*~~
 
 
-- [ ] 3. Figure out from the documentation how to use the *NSNumberFormatter* class to format your **display** so that it only shows 6 digits after the decimal point
+- [ ] ~~3. Figure out from the documentation how to use the *NSNumberFormatter* class to format your **display** so that it only shows 6 digits after the decimal point~~
 
 
-- [ ] 4. Make one of your operation buttons be “generate a random number between 0 and 1”
+- [ ] ~~4. Make one of your operation buttons be “generate a random number between 0 and 1”~~
