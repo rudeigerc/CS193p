@@ -1,2 +1,8 @@
 # CS193p
-Assignments from Stanford CS193p course
+Programming projects from Stanford CS193p course.
+
+- [x] Calculator
+- [ ] Calculator Brain
+- [ ] Graphing Calculator
+- [ ] Smashtag Mentions
+- [ ] Smashtag Mention Popularity
