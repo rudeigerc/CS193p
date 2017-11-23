@@ -54,6 +54,20 @@ class Concentration {
 			let card = Card()
 			cards += [card, card]
 		}
-		// TODO: Shuffle the cards
+		cards.shuffle()
+	}
+}
+
+extension Array {
+	mutating func shuffle() {
+		// Fisher–Yates shuffle
+		var length = self.count
+		for _ in self {
+			let rand = Int(arc4random_uniform(UInt32(length)))
+			if rand != length - 1 {
+				self.swapAt(length - 1, rand)
+			}
+			length -= 1
+		}
 	}
 }
