@@ -17,7 +17,8 @@ class ViewController: UIViewController {
 	@IBOutlet private var cardButtons: [UIButton]!
 	
 	@IBAction private func newGameButton(_ sender: UIButton) {
-		
+		initView()
+		game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
 	}
 	
 	@IBAction private func touchCard(_ sender: UIButton) {
@@ -55,15 +56,23 @@ class ViewController: UIViewController {
 		}
 	}
 
-	private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🍬", "🍎"]
-	
 	private var emoji = [Int:String]()
 	
 	private func emoji(for card: Card) -> String {
-		if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-			emoji[card.identifier] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+		if emoji[card.identifier] == nil, game.emojiChoices.count > 0 {
+			emoji[card.identifier] = game.emojiChoices.remove(at: game.emojiChoices.count.arc4random)
 		}
 		return emoji[card.identifier] ?? "?"
+	}
+	
+	private func initView() {
+		for button in cardButtons {
+			button.setTitle("", for: UIControlState.normal)
+			button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+			button.isEnabled = true
+		}
+		scoreLabel.text = "Score: 0"
+		flipCountLabel.text = "Flips: 0"
 	}
 	
     override func viewDidLoad() {

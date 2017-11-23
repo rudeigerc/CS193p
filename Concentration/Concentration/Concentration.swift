@@ -68,6 +68,23 @@ class Concentration {
 		}
 	}
 	
+	var emojiChoices = [String]()
+	
+	private var themes = [String:[String]]()
+	
+	private func randomTheme() {
+		themes["faces"] = ["😀", "😂", "😇", "😡", "😱", "🤢"]
+		themes["sports"] = ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐"]
+		themes["animals"] = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊"]
+		themes["males"] = ["💂‍♂️", "🕵️‍♂️", "👨‍⚕️", "👨‍🌾", "👨‍🍳", "👨‍🎓"]
+		themes["females"] = ["💂‍♀️", "🕵️‍♀️", "👩‍⚕️", "👩‍🌾", "👩‍🍳", "👩‍🎓"]
+		themes["moons"] = ["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔"]
+		// add more themes here
+		
+		let themeKeys = Array(themes.keys)
+		emojiChoices = themes[themeKeys[themeKeys.count.arc4random]]!
+	}
+	
 	init(numberOfPairsOfCards: Int) {
 		assert(numberOfPairsOfCards > 0, "Concentration.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
 		for _ in 1...numberOfPairsOfCards {
@@ -75,6 +92,7 @@ class Concentration {
 			cards += [card, card]
 		}
 		cards.shuffle()
+		randomTheme()
 	}
 }
 
