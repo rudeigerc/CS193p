@@ -12,6 +12,8 @@ class Concentration {
 	
 	private(set) var cards = [Card]()
 	
+	private(set) var score = 0
+	
 	private(set) var flipCount = 0
 	
 	private var indexOfOneAndOnlyFaceUpCard: Int? {
@@ -35,6 +37,8 @@ class Concentration {
 		}
 	}
 	
+	private var mismatchedCards = Set<Int>()
+	
 	func chooseCard(at index: Int) {
 		assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): chosen index not in the cards")
 		flipCount += 1
@@ -43,6 +47,19 @@ class Concentration {
 				if cards[matchIndex].identifier == cards[index].identifier {
 					cards[matchIndex].isMatched = true
 					cards[index].isMatched = true
+					score += 2
+				} else {
+					if mismatchedCards.contains(cards[matchIndex].identifier) {
+						score -= 1
+					} else {
+						mismatchedCards.insert(cards[matchIndex].identifier)
+					}
+					
+					if mismatchedCards.contains(cards[index].identifier) {
+						score -= 1
+					} else {
+						mismatchedCards.insert(cards[index].identifier)
+					}
 				}
 				cards[index].isFaceUp = true
 			} else {
