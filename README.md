@@ -12,7 +12,7 @@ Programming projects from Stanford CS193p course.
 - [ ] Smashtag Mention Popularity
 
 ## 2017 Fall
-- [ ] [Concentration]
+- [x] [Concentration]
 - [ ] Set
 
 ## Reference
